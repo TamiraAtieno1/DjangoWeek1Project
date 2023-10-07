@@ -4,13 +4,13 @@
 {%block content%}
 <a href="{% url 'blogapp:create' %}" class="btn btn-primary">Create</a>
 {%for blog in blogs%}
-    <div class="card" style="width: 18rem;">
+    <div class="card grid text-center"  style="--bs-columns: 4; --bs-gap: 5rem; " style="width: 18rem;">
     <img src="{{ blog.image.url }}" class="card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title">{{blog.title}}</h5>
         <h5 class="card-title">{{blog.subtitle}}</h5>
         <p class="card-text">{{blog.text}}</p>
-        <a href="{% url 'blogapp:detailed' blog_id=blog.id%}" class="btn btn-primary">View detail</a>
+    <a href="{% url 'blogapp:detailed' blog_id=blog.id%}" class="btn btn-primary">View detail</a>
     </div>
     </div>
     {%endfor%}
