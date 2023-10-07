@@ -4,6 +4,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from blogapp.models import Blog2
 from .serializers import Blog2Serializer
+from django.shortcuts import get_object_or_404
 
 @api_view(["GET"])
 def getdata(request):
@@ -21,12 +22,24 @@ def addData(request):
 
 
 @api_view(["PATCH"])
-def updateData(request):
+def updateData(request, id):
     blogs = Blog2.objects.get(id=id)
-    serializer = Blog2Serializer(result, data = request.data, partial=True)
+    serializer = Blog2Serializer(blogs, data = request.data, partial=True)
     if serializer.is_valid():
         serializer.save() 
     return Response(serializer.data)
+
+
+@api_view(["DELETE"])
+def delete(request, id=None):  
+    blogs = get_object_or_404(Blog2, id=id)
+    blogs.delete()
+    return Response({"status": "success", "data": "Record Deleted"})
+
+ 
+
+
+
 
               
 
