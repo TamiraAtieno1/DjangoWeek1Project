@@ -10,7 +10,7 @@ urlpatterns = [
     path('create/', create, name="create"),
     path('detailed/<int:blog_id>', detailed, name="detailed" ),
     path('update/<int:blog_id>', update, name="update"),
-    path('delete/<int:blog_id>', delete, name="delete")
+    path('delete/<int:blog_id>', delete, name="delete"),
 ]
 
 if settings.DEBUG:

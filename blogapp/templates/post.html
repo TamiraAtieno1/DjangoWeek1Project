@@ -1,0 +1,13 @@
+{%extends 'index.html'%}
+
+{% load static %}
+
+{%block content%}
+<a href="{% url 'blogapp:home' %}">Home</a>
+<h1>{{blog.title}}</h1>
+<h1>{{blog.subtitle}}</h1>
+<h1>{{blog.text}}</h1>
+<a href="{% url 'blogapp:update' blog_id=blog.id%}">Update</a>
+<a href="{% url 'blogapp:delete' blog_id=blog.id%}">Delete</a>
+
+{%endblock%}
